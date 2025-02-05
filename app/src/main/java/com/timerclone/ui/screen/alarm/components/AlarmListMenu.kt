@@ -18,7 +18,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.timerclone.R
 
 @Composable
 fun AlarmListMenu() {
@@ -32,7 +34,7 @@ fun AlarmListMenu() {
         IconButton(onClick = { expandedMenu = true }) {
             Icon(
                 Icons.Rounded.MoreVert,
-                contentDescription = "More options",
+                contentDescription = stringResource(R.string.more_options),
                 modifier = Modifier.size(32.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
@@ -40,19 +42,19 @@ fun AlarmListMenu() {
 
         DropdownMenu(expanded = expandedMenu, onDismissRequest = { expandedMenu = false }) {
             DropdownMenuItem(
-                text = { Text("Set Sleep mode schedule") },
+                text = { Text(stringResource(R.string.set_sleep_mode_schedule)) },
                 onClick = { /* Handle edit! */ },
             )
             DropdownMenuItem(
-                text = { Text("Edit") },
+                text = { Text(stringResource(R.string.edit)) },
                 onClick = { /* Handle settings! */ },
             )
             DropdownMenuItem(
-                text = { Text("Sort") },
+                text = { Text(stringResource(R.string.sort)) },
                 onClick = { /* Handle send feedback! */ },
             )
             DropdownMenuItem(
-                text = { Text("Setting") },
+                text = { Text(stringResource(R.string.setting)) },
                 onClick = { /* Handle send feedback! */ },
             )
         }

@@ -24,8 +24,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.timerclone.R
 import com.timerclone.ui.screen.alarm.components.AlarmList
 import com.timerclone.ui.theme.spacing
 
@@ -71,7 +73,7 @@ fun AlarmScreen() {
             }) {
             Spacer(Modifier.height((screenSize * 0.13).dp))
             Text(
-                "Alarm in 2 hours 20 minutes",
+                text = "${stringResource(R.string.alarm_in)} 2 hours 20 minutes",
                 style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(0.6f)

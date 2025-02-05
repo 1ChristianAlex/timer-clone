@@ -23,7 +23,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.timerclone.R
 import com.timerclone.ui.theme.spacing
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
@@ -134,7 +136,7 @@ fun AlarmList(enableNestScroll: Boolean, enableNestScrollTitle: Boolean) {
 
     ) {
         Text(
-            text = "Alarm",
+            text = stringResource(R.string.alarm),
             style = MaterialTheme.typography.headlineSmall,
             modifier = Modifier.alpha(alpha)
         )
@@ -142,7 +144,7 @@ fun AlarmList(enableNestScroll: Boolean, enableNestScrollTitle: Boolean) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 Icons.Rounded.Add,
-                contentDescription = "Add new alarm",
+                contentDescription = stringResource(R.string.add_new_alarm),
                 modifier = Modifier.size(32.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )

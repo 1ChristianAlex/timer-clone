@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Timer Clone</string>
+    <string name="alarm">Alarm</string>
+    <string name="alarm_in">Alarm in</string>
+    <string name="set_sleep_mode_schedule">Set Sleep mode schedule</string>
+    <string name="edit">Edit</string>
+    <string name="sort">Sort</string>
+    <string name="setting">Setting</string>
+    <string name="add_new_alarm">Add new alarm</string>
+    <string name="more_options">More options</string>
 </resources>
