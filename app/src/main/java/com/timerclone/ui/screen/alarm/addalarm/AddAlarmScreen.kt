@@ -22,6 +22,8 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.timerclone.ui.screen.alarm.addalarm.components.AddTimerForm
+import com.timerclone.ui.screen.alarm.addalarm.components.PagerSelectTime
 import com.timerclone.ui.theme.spacing
 
 @Composable
@@ -64,15 +66,12 @@ fun AddAlarmScreen() {
 
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(topEndPercent = 8, topStartPercent = 8))
+                .clip(RoundedCornerShape(topEndPercent = 4, topStartPercent = 4))
                 .background(MaterialTheme.colorScheme.secondaryContainer)
-                .padding(
-                    MaterialTheme.spacing.md
-                )
                 .weight(1f)
                 .fillMaxWidth(),
         ) {
-
+            AddTimerForm()
         }
         Row(
             modifier = Modifier.fillMaxWidth()

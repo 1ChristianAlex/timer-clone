@@ -34,7 +34,7 @@ fun TimerCloneApp(
     NavHost(
         navController = localNavController, startDestination = viewModel.startDestination
     ) {
-        navigation<Destination.AlarmNav>(startDestination = Destination.Alarm) {
+        navigation<Destination.AlarmNav>(startDestination = Destination.AddAlarm) {
             composable<Destination.Alarm> { AlarmScreen(alarmListViewModel = alarmListViewModel) }
             composable<Destination.AddAlarm> { AddAlarmScreen() }
         }
