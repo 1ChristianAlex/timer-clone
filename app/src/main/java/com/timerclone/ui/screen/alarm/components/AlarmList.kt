@@ -14,6 +14,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +27,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.timerclone.R
+import com.timerclone.ui.screen.alarm.AlarmListViewModel
 import com.timerclone.ui.theme.spacing
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
@@ -33,21 +35,19 @@ import kotlinx.datetime.toLocalDateTime
 
 
 @Composable
-fun AlarmList(enableNestScroll: Boolean, enableNestScrollTitle: Boolean) {
+fun AlarmList(
+    enableNestScroll: Boolean,
+    enableNestScrollTitle: Boolean,
+    alarmListViewModel: AlarmListViewModel,
+) {
     val scrollNestedState = rememberScrollState()
-
-
     val alarmList = remember {
         mutableStateListOf(
             AlarmItem(
-                name = "Gaming",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Gaming", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true,
-                daysWeek = listOf(1, 3, 5)
-            ),
-            AlarmItem(
+                ), isEnable = true, daysWeek = listOf(1, 3, 5)
+            ), AlarmItem(
                 name = "Work",
                 time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
@@ -55,69 +55,45 @@ fun AlarmList(enableNestScroll: Boolean, enableNestScrollTitle: Boolean) {
                 isEnable = true,
 
                 ), AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
+                ), isEnable = true
             ), AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
+                ), isEnable = true
             ), AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true,
-                daysWeek = listOf(2)
+                ), isEnable = true, daysWeek = listOf(2)
             ), AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
+                ), isEnable = true
             ), AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
+                ), isEnable = true
             ), AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
-            ),
-            AlarmItem(
-                name = "Stop Work",
-                time = Clock.System.now().toLocalDateTime(
-                    TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
+                ), isEnable = true
             ), AlarmItem(
-                name = "Gaming",
-                time = Clock.System.now().toLocalDateTime(
+                name = "Stop Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
-            ),
-            AlarmItem(
-                name = "Work",
-                time = Clock.System.now().toLocalDateTime(
+                ), isEnable = true
+            ), AlarmItem(
+                name = "Gaming", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
-            ),
-            AlarmItem(
-                name = "Stop Work",
-                time = Clock.System.now().toLocalDateTime(
+                ), isEnable = true
+            ), AlarmItem(
+                name = "Work", time = Clock.System.now().toLocalDateTime(
                     TimeZone.currentSystemDefault()
-                ),
-                isEnable = true
+                ), isEnable = true
+            ), AlarmItem(
+                name = "Stop Work", time = Clock.System.now().toLocalDateTime(
+                    TimeZone.currentSystemDefault()
+                ), isEnable = true
             )
         )
     }
@@ -142,12 +118,16 @@ fun AlarmList(enableNestScroll: Boolean, enableNestScrollTitle: Boolean) {
         )
 
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                Icons.Rounded.Add,
-                contentDescription = stringResource(R.string.add_new_alarm),
-                modifier = Modifier.size(32.dp),
-                tint = MaterialTheme.colorScheme.onBackground
-            )
+            IconButton(onClick = {
+                alarmListViewModel.goToAddAlarmScreen()
+            }) {
+                Icon(
+                    Icons.Rounded.Add,
+                    contentDescription = stringResource(R.string.add_new_alarm),
+                    modifier = Modifier.size(32.dp),
+                    tint = MaterialTheme.colorScheme.onBackground
+                )
+            }
             AlarmListMenu()
         }
     }

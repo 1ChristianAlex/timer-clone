@@ -33,7 +33,9 @@ import com.timerclone.ui.theme.spacing
 
 
 @Composable
-fun AlarmScreen() {
+fun AlarmScreen(
+    alarmListViewModel: AlarmListViewModel,
+) {
     val localDensity = LocalDensity.current
     val screenSize = LocalConfiguration.current.screenHeightDp
     val scrollState = rememberScrollState()
@@ -99,7 +101,8 @@ fun AlarmScreen() {
         Spacer(Modifier.height((screenSize * 0.3).dp))
         AlarmList(
             enableNestScroll = enableNestScroll,
-            enableNestScrollTitle = enableNestScrollTitle
+            enableNestScrollTitle = enableNestScrollTitle,
+            alarmListViewModel = alarmListViewModel
         )
     }
 }

@@ -3,6 +3,7 @@ package com.timerclone.di
 import com.timerclone.ui.route.DefaultNavigationViewModel
 import com.timerclone.ui.route.Destination
 import com.timerclone.ui.route.Navigator
+import com.timerclone.ui.screen.alarm.AlarmListViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -16,7 +17,13 @@ object SingletonModule {
     @Provides
     @Singleton
     fun provideDefaultNavigation(): DefaultNavigationViewModel {
-        return DefaultNavigationViewModel(startDestination = Destination.Alarm)
+        return DefaultNavigationViewModel(startDestination = Destination.AlarmNav)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAlarmListViewModel(navigatorViewModel: DefaultNavigationViewModel): AlarmListViewModel {
+        return AlarmListViewModel(navigatorViewModel = navigatorViewModel)
     }
 }
 

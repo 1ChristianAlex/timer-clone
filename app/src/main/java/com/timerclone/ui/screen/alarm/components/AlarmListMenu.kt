@@ -26,7 +26,6 @@ import com.timerclone.R
 fun AlarmListMenu() {
     var expandedMenu by remember { mutableStateOf(false) }
 
-
     Box(
         modifier = Modifier
             .wrapContentSize(Alignment.TopStart)
