@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -8,6 +11,14 @@ plugins {
     kotlin("plugin.serialization") version "2.1.10"
 }
 
+
+val prop = Properties().apply {
+    load(FileInputStream(File(rootProject.rootDir, "version.properties")))
+}
+
+val versionCode = prop.getProperty("versionCode").toInt()
+val versionName: String = prop.getProperty("versionName")
+
 android {
     namespace = "com.timerclone"
     compileSdk = 35
@@ -16,8 +27,8 @@ android {
         applicationId = "com.timerclone"
         minSdk = 31
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = versionCode
+        versionName = versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
