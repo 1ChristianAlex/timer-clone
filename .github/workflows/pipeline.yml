@@ -1,0 +1,25 @@
+name: Bump version KMM Library
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  workflow_dispatch:
+
+jobs:
+  increment-version:
+    name: Bump version KMM Library
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Gradle Properties Version Incrementer
+        uses: cxs457/gradle-version-incrementer@1.4.0
+        with:
+          github-token: ${{ secrets.WORKFLOW_PUSH_TOKEN }}
+          file-path: ${{ github.workspace }}/version.properties
+          increment-type: 'patch'
+          mode: 'update-file'

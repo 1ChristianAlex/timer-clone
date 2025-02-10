@@ -1,5 +1,6 @@
 package com.timerclone.ui.route
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavOptionsBuilder
@@ -26,6 +27,7 @@ class DefaultNavigationViewModel @Inject constructor(
     private val _navigationAction = Channel<NavigationAction>()
     override val navigationAction = _navigationAction.consumeAsFlow()
 
+    private val _currentAction = LiveData()
     override fun navigate(destination: Destination, navOptions: NavOptionsBuilder.() -> Unit) {
         viewModelScope.launch {
             _navigationAction.send(NavigationAction.Navigate(destination, navOptions))

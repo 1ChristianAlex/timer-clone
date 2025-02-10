@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.timerclone.ui.TimerCloneApp
+import com.timerclone.ui.screen.common.appbar.TimerCloneBottomBar
 import com.timerclone.ui.theme.TimerCloneTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TimerCloneTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(), bottomBar = { TimerCloneBottomBar() }
+                ) { innerPadding ->
                     Box(
                         Modifier
                             .padding(innerPadding)

@@ -27,10 +27,11 @@ import com.timerclone.ui.screen.alarm.addalarm.components.PagerSelectTime
 import com.timerclone.ui.theme.spacing
 
 @Composable
-fun AddAlarmScreen() {
+fun AddAlarmScreen(
+    addAlarmViewModel: AddAlarmViewModel,
+) {
     val screenHeightSize = LocalConfiguration.current.screenHeightDp
     val rowPagerHeight = screenHeightSize * 0.4
-
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -76,7 +77,9 @@ fun AddAlarmScreen() {
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
-            BottomButtons(text = "Cancel", modifier = Modifier.weight(1f))
+            BottomButtons(text = "Cancel", modifier = Modifier.weight(1f), onClick = {
+                addAlarmViewModel.backToAlarmScreen()
+            })
             BottomButtons(text = "Save", modifier = Modifier.weight(1f))
         }
     }

@@ -13,12 +13,15 @@ import com.timerclone.ui.route.Navigator
 import com.timerclone.ui.screen.alarm.AlarmListViewModel
 import com.timerclone.ui.screen.alarm.AlarmScreen
 import com.timerclone.ui.screen.alarm.addalarm.AddAlarmScreen
+import com.timerclone.ui.screen.alarm.addalarm.AddAlarmViewModel
 import com.timerclone.ui.utils.ObserverAsEvents
 
 @Composable
 fun TimerCloneApp(
     viewModel: Navigator = viewModel<DefaultNavigationViewModel>(),
     alarmListViewModel: AlarmListViewModel = viewModel<AlarmListViewModel>(),
+
+    addAlarmViewModel: AddAlarmViewModel = viewModel<AddAlarmViewModel>(),
 ) {
     val localNavController = rememberNavController()
 
@@ -34,9 +37,9 @@ fun TimerCloneApp(
     NavHost(
         navController = localNavController, startDestination = viewModel.startDestination
     ) {
-        navigation<Destination.AlarmNav>(startDestination = Destination.AddAlarm) {
+        navigation<Destination.AlarmNav>(startDestination = Destination.Alarm) {
             composable<Destination.Alarm> { AlarmScreen(alarmListViewModel = alarmListViewModel) }
-            composable<Destination.AddAlarm> { AddAlarmScreen() }
+            composable<Destination.AddAlarm> { AddAlarmScreen(addAlarmViewModel = addAlarmViewModel) }
         }
 
     }
