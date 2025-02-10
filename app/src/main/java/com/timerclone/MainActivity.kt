@@ -24,8 +24,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             TimerCloneTheme {
                 Scaffold(
-                    modifier = Modifier.fillMaxSize(), bottomBar = { TimerCloneBottomBar() }
-                ) { innerPadding ->
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = { TimerCloneBottomBar() }) { innerPadding ->
                     Box(
                         Modifier
                             .padding(innerPadding)
